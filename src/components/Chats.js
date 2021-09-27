@@ -34,11 +34,10 @@ export default function Chats() {
         return;
       }
 
-      // Get-or-Create should be in a Firebase Function
       axios
         .get("https://api.chatengine.io/users/me/", {
           headers: {
-            "project-id": "b3d12e55-c401-43d2-8f10-e7f95d584947",
+            "project-id": process.env.REACT_APP_CHAT_ENGINE_ID,
             "user-name": user.email,
             "user-secret": user.uid,
           },
@@ -58,7 +57,7 @@ export default function Chats() {
             axios
               .post("https://api.chatengine.io/users/", formdata, {
                 headers: {
-                  "private-key": "c56ea477-9caf-430a-a5ab-429a24115c6d",
+                  "private-key": process.env.REACT_APP_CHAT_ENGINE_KEY,
                 },
               })
               .then(() => setLoading(false))
@@ -82,7 +81,7 @@ export default function Chats() {
 
       <ChatEngine
         height="calc(100vh - 66px)"
-        projectID="b3d12e55-c401-43d2-8f10-e7f95d584947"
+        projectID={process.env.REACT_APP_CHAT_ENGINE_ID}
         userName={user.email}
         userSecret={user.uid}
       />
