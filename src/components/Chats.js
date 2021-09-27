@@ -62,10 +62,9 @@ export default function Chats() {
                 },
               })
               .then(() => setLoading(false))
-              .catch((e) => console.log("e", e.response));
+              .catch((error) => console.log("error", error.response));
           });
         });
-      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
   }, [user, history]);
 
@@ -74,7 +73,7 @@ export default function Chats() {
   return (
     <div className="chats-page">
       <div className="nav-bar">
-        <div className="logo-tab">Unichat</div>
+        <div className="logo-tab">MessengerApp</div>
 
         <div onClick={handleLogout} className="logout-tab">
           Logout
